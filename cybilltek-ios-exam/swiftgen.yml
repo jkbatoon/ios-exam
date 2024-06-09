@@ -1,0 +1,23 @@
+# swiftgen.yml
+# in the beginning, you can specify input_dir and output_dir, e.g., as follows:
+
+ input_dir: cybilltek-ios-exam/            # optional
+
+ output_dir: cybilltek-ios-exam/Resources/Generated/ # optional
+
+# in general, swiftgen.yml contains the following section for each parser:
+ xcassets: # required
+   inputs:     # required
+     - Resources/Assets.xcassets
+     
+   outputs:    # required
+     - templateName: swift5 # required (either templateName or templatePath)
+       params: # optional
+         forceProvidesNamespaces: true  # optional
+#         publicAccess: true             # optional
+#         enumName: [Assets] # optional y
+       output: Assets.swift    # required
+#       output: cybilltek-ios-exam/Resources/Generated/Assets.swift    # required
+      
+## For more info, use `swiftgen config doc` to open the full documentation on GitHub.
+## https://github.com/SwiftGen/SwiftGen/tree/6.6.3/Documentation/

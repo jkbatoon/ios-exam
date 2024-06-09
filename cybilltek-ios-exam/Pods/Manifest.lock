@@ -1,0 +1,68 @@
+PODS:
+  - Alamofire (5.2.0)
+  - CocoaLumberjack (3.8.5):
+    - CocoaLumberjack/Core (= 3.8.5)
+  - CocoaLumberjack/Core (3.8.5)
+  - Differentiator (5.0.0)
+  - Kingfisher (7.11.0)
+  - RxCocoa (6.7.1):
+    - RxRelay (= 6.7.1)
+    - RxSwift (= 6.7.1)
+  - RxDataSources (5.0.0):
+    - Differentiator (~> 5.0)
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
+  - RxGesture (4.0.4):
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
+  - RxRelay (6.7.1):
+    - RxSwift (= 6.7.1)
+  - RxSwift (6.7.1)
+  - SVGKit (3.0.0):
+    - CocoaLumberjack (~> 3.0)
+  - SwiftGen (6.6.3)
+  - SwiftyJSON (5.0.2)
+
+DEPENDENCIES:
+  - Alamofire (= 5.2)
+  - Kingfisher
+  - RxCocoa
+  - RxDataSources
+  - RxGesture
+  - RxSwift
+  - SVGKit
+  - SwiftGen (~> 6.0)
+  - SwiftyJSON
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - CocoaLumberjack
+    - Differentiator
+    - Kingfisher
+    - RxCocoa
+    - RxDataSources
+    - RxGesture
+    - RxRelay
+    - RxSwift
+    - SVGKit
+    - SwiftGen
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: c1ca147559e730bfb2182c8c7aafbdd90a867987
+  CocoaLumberjack: 6a459bc897d6d80bd1b8c78482ec7ad05dffc3f0
+  Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
+  Kingfisher: b9c985d864d43515f404f1ef4a8ce7d802ace3ac
+  RxCocoa: f5609cb4637587a7faa99c5d5787e3ad582b75a4
+  RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
+  RxGesture: f3efb47ed2d26a8082f7b660d4a59970e275a7f8
+  RxRelay: 4151ba01152436b08271e08410135e099880eae5
+  RxSwift: b9a93a26031785159e11abd40d1a55bcb8057e52
+  SVGKit: 1ad7513f8c74d9652f94ed64ddecda1a23864dea
+  SwiftGen: 4993cbf71cbc4886f775e26f8d5c3a1188ec9f99
+  SwiftyJSON: f5b1bf1cd8dd53cd25887ac0eabcfd92301c6a5a
+
+PODFILE CHECKSUM: 65e15ff12ade91406aee410c9fd30de41347729a
+
+COCOAPODS: 1.15.2

@@ -1,0 +1,6 @@
+framework module Pods_cybilltek_ios_exam {
+  umbrella header "Pods-cybilltek-ios-exam-umbrella.h"
+
+  export *
+  module * { export * }
+}
