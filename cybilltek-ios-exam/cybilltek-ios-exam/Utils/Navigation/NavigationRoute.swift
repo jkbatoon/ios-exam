@@ -39,6 +39,9 @@ struct NavigationRoute: AppNavigation {
         case .personsList:
             let vc = PersonsViewController(viewModel: .init(), mainView: .init())
             return vc
+        case .personDetailView(let data):
+            let vc = PersonDetailsViewController(viewModel: .init(data: data), mainView: .init())
+            return vc
         default: break
         }
         return UIViewController()

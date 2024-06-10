@@ -13,6 +13,7 @@ extension UIImageView {
         guard let url = url else { return }
         kf.indicatorType = .activity
         kf.setImage(with: url,
+                    placeholder: Asset.icBackArrow.image,
                     options: [.transition(transition)])
         clearImageCache(isEnabled: clearCache)
     }

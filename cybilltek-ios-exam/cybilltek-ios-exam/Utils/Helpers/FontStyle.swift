@@ -20,10 +20,10 @@ enum Font {
         case semibold = "Inter-SemiBold"
 
         func getUIFont(_ size: CGFloat = 16) -> UIFont {
-            let fontFeatures = [[UIFontDescriptor.FeatureKey.featureIdentifier: kNumberSpacingType,
-                                 UIFontDescriptor.FeatureKey.typeIdentifier: kProportionalNumbersSelector],
-                                [UIFontDescriptor.FeatureKey.featureIdentifier: kNumberCaseType,
-                                 UIFontDescriptor.FeatureKey.typeIdentifier: kUpperCaseNumbersSelector]]
+            let fontFeatures = [[UIFontDescriptor.FeatureKey.selector: kNumberSpacingType,
+                                 UIFontDescriptor.FeatureKey.type: kProportionalNumbersSelector],
+                                [UIFontDescriptor.FeatureKey.selector: kNumberCaseType,
+                                 UIFontDescriptor.FeatureKey.type: kUpperCaseNumbersSelector]]
             var fontDescriptor = UIFontDescriptor(name: self.rawValue, size: size)
             fontDescriptor = fontDescriptor.addingAttributes([UIFontDescriptor.AttributeName.featureSettings: fontFeatures])
             return UIFont(descriptor: fontDescriptor, size: size)

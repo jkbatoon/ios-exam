@@ -202,7 +202,7 @@ extension NavigationController {
     
     func setUpNavigationBarVisibility(viewController: UIViewController) {
         switch viewController {
-        case is PersonsViewController:
+        case is PersonDetailsViewController:
             setNavigationBarHidden(false, animated: true)
         default:
             setNavigationBarHidden(true, animated: false)
@@ -241,10 +241,19 @@ extension NavigationController {
         var titleColor: UIColor? = nil
         
         switch viewController {
-        case is PersonsViewController:
-            title = "Persons List"
+        case is PersonDetailsViewController:
+            title = "Person Details"
             titleColor = Asset.Colors.themeMain.color
-            self.setNavigationBarColor(color: Asset.Colors.themeSecondary.color)
+            if let vc = viewController as? PersonDetailsViewController {
+                let vcPersonDetails = vc.viewModel.personDetails
+                if let name = vcPersonDetails.name,
+                   let first = name.first,
+                   let last = name.last {
+                    let fullName = "\(first) \(last)"
+                    title = fullName
+                }
+            }
+            self.setNavigationBarColor(color: Asset.Colors.text.color)
         default:
             self.setNavigationBarColor(color: .clear)
         }
@@ -319,7 +328,7 @@ extension NavigationController {
     func setupNavigationBarButtons(viewController: UIViewController) {
         // add desired controller for back button
         switch viewController {
-        case is PersonsViewController:
+        case is PersonDetailsViewController:
             viewController.navigationItem.addButtons(types: [.back], position: .left, disposeBag: disposeBag)
         default:
             break

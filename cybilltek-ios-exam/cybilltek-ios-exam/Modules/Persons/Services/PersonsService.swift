@@ -26,7 +26,7 @@ struct PersonsService {
             let rootUrl = "https://randomuser.me/api/"
             let params = [
                 "page": page ?? 1,
-                "results": 20 // default value of results per request
+                "results": 10 // count of results per request
             ]
             
             guard let convertedRootUrl = URL(string: rootUrl) else {
@@ -50,9 +50,8 @@ struct PersonsService {
                           /// Handle success, parse JSON data
                           if let responseData = response.data {
                               do {
-                                  print(data)
-//                                  let users = try decoder.decode(PersonsModel.self, from: responseData)
-                                  let users = try decoder.decode(PersonsModel.self, from: JSONSerialization.data(withJSONObject: data.self))
+                                  let users = try decoder.decode(PersonsModel.self, 
+                                                                 from: JSONSerialization.data(withJSONObject: data.self))
                                   observer.onNext(.success(users.results))
                               } catch {
                                   /// Handle json decode error
@@ -76,31 +75,6 @@ struct PersonsService {
                       observer.onNext(.error(APIError.apiFailure(message: ErrorType.unknown.message)))
                   }
               })
-            
-//            if let endpoint = URL(string: rootUrl) {
-//                ApiHelper.get(
-//                    url: endpoint) { resultJson, error in
-//                        if let error = error {
-//                            observer.onNext(.error(APIError.apiFailure(message: error.message)))
-//                        } else {
-//                            if let json = resultJson, let jsonData = try? json.rawData() {
-//                                let decoder = JSONDecoder()
-//                                do {
-//                                    let data = try decoder.decode(PersonsModel.self, from: jsonData)
-//                                    observer.onNext(.success(data.results))
-//                                } catch {
-//                                    observer.onNext(.error(APIError.apiFailure(message: ErrorType.unknown.message)))
-//                                }
-//                            } else {
-//                                observer.onNext(.error(APIError.apiFailure(message: ErrorType.unknown.message)))
-//                            }
-//                        }
-//                    }
-//            } else {
-//                observer.onNext(.error(APIError.apiFailure(message: ErrorType.unreachable.message)))
-//            }
-            
-            
             return Disposables.create()
         }
     }

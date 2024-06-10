@@ -12,21 +12,17 @@ import RxSwift
 class PersonsView: BaseView {
     let tableView: UITableView = {
         let table = UITableView().usingAutoLayout()
-//        table.alwaysBounceVertical = false
         table.separatorStyle = .none
-        table.allowsSelection = false
-//        table.transform = CGAffineTransform(scaleX: 1, y: -1)
+        table.allowsSelection = true
         table.backgroundColor = .clear
+        table.selectionFollowsFocus = true
         table.rowHeight = UITableView.automaticDimension
+
+        table.register(PersonsTableViewCell.self, forCellReuseIdentifier: PersonsTableViewCell.identifier)
         
-        table.register(UINib(nibName: PersonsTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: PersonsTableViewCell.identifier)
-        
+        table.layoutIfNeeded()
         return table
     }()
-    
-    override func registerTableViewCells() {
-        
-    }
     
     override func setView() {
         backgroundColor = Asset.Colors.themeMain.color

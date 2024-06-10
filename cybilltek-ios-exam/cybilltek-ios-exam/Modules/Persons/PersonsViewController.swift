@@ -12,6 +12,20 @@ import RxCocoa
 
 class PersonsViewController: BaseViewController<PersonsView, PersonsViewModel> {
     
+    let refreshControl = UIRefreshControl()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+    }
+    
+    
+    @objc func refresh(_ sender: AnyObject) {
+        print("pulled")
+        viewModel.refresh()
+    }
+    
     override func setBindings() {
         let initialTrigger = getInitialTrigger()
         
@@ -30,22 +44,46 @@ class PersonsViewController: BaseViewController<PersonsView, PersonsViewModel> {
             .drive(mainView.tableView.rx.items(dataSource: viewModel.dataSource()))
             .disposed(by: disposeBag)
         
-//        output.data
-//            .skip(1)
-//            .drive { [weak self] data in
-//                guard let self = self else { return }
-//                self.handleNoteDisplay(data: data)
-//            }
-//            .disposed(by: disposeBag)
+        output.data
+            .skip(1)
+            .drive { [weak self] data in
+                guard let self = self else { return }
+                if refreshControl.isRefreshing {
+                    refreshControl.endRefreshing()
+                }
+            }
+            .disposed(by: disposeBag)
     }
     
     private func setObservers() {
-        mainView.tableView.rx.setDelegate(self)
+        mainView.tableView.rx
+            .setDelegate(self)
             .disposed(by: disposeBag)
+        
+        mainView.tableView.addSubview(refreshControl)
+        
+        Observable.zip(
+            mainView.tableView.rx.itemSelected,
+            mainView.tableView.rx.modelSelected(PersonDetails.self)).bind { 
+                [weak self] indexPath, model in
+                guard let self = self else { return }
+                // push person details view
+                navigateToPersonDetailsScreen(data: model)
+            }.disposed(by: disposeBag)
+    }
+    
+    private func navigateToPersonDetailsScreen(data: PersonDetails) {
+        let vcPersonDetails = PersonDetailsViewController(viewModel: .init(data: data), mainView: .init())
+        let visibleVc = NavigationController.getVisibleViewController()
+        if let nav = visibleVc.navigationController {
+            nav.pushViewController(vcPersonDetails, animated: true)
+        }
     }
 }
 
 extension PersonsViewController: UITableViewDelegate {
+    
+    
     // pagination
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let rowCount = tableView.numberOfRows(inSection: 0)

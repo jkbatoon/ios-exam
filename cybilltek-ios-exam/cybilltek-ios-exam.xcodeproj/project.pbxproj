@@ -25,6 +25,10 @@
 		8A4E4E292C15ED4200DE4291 /* UIDevice+Notch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E4E282C15ED4200DE4291 /* UIDevice+Notch.swift */; };
 		8A4E4E2B2C15F29200DE4291 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E4E2A2C15F29200DE4291 /* UIImage+Extension.swift */; };
 		8A4E4E2D2C15F8E200DE4291 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E4E2C2C15F8E200DE4291 /* UIImageView+Extension.swift */; };
+		8A6638202C16896D00C532A5 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A66381F2C16896D00C532A5 /* UIStackView.swift */; };
+		8A6638232C16BF6200C532A5 /* PersonDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6638222C16BF6200C532A5 /* PersonDetailsView.swift */; };
+		8A6638252C16BF6A00C532A5 /* PersonDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6638242C16BF6A00C532A5 /* PersonDetailsViewModel.swift */; };
+		8A6638272C16BF7900C532A5 /* PersonDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6638262C16BF7900C532A5 /* PersonDetailsViewController.swift */; };
 		8AB11CD02C1457A1002174B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB11CCF2C1457A1002174B8 /* AppDelegate.swift */; };
 		8AB11CD22C1457A1002174B8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB11CD12C1457A1002174B8 /* SceneDelegate.swift */; };
 		8AB11CD42C1457A1002174B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB11CD32C1457A1002174B8 /* ViewController.swift */; };
@@ -38,7 +42,6 @@
 		8AB11CF12C14692D002174B8 /* PersonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB11CF02C14692D002174B8 /* PersonsView.swift */; };
 		8AB11CF32C146938002174B8 /* PersonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB11CF22C146938002174B8 /* PersonsViewModel.swift */; };
 		8AB11CF52C146941002174B8 /* PersonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB11CF42C146941002174B8 /* PersonsViewController.swift */; };
-		8AB11CF82C1469A0002174B8 /* PersonsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AB11CF72C1469A0002174B8 /* PersonsTableViewCell.xib */; };
 		8AB11CFA2C1469AF002174B8 /* PersonsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB11CF92C1469AF002174B8 /* PersonsTableViewCell.swift */; };
 		8AB11CFC2C146CAE002174B8 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB11CFB2C146CAE002174B8 /* UIView.swift */; };
 		8AB11D082C14954F002174B8 /* PersonsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB11D072C14954F002174B8 /* PersonsModel.swift */; };
@@ -77,6 +80,10 @@
 		8A4E4E282C15ED4200DE4291 /* UIDevice+Notch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Notch.swift"; sourceTree = "<group>"; };
 		8A4E4E2A2C15F29200DE4291 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		8A4E4E2C2C15F8E200DE4291 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		8A66381F2C16896D00C532A5 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
+		8A6638222C16BF6200C532A5 /* PersonDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsView.swift; sourceTree = "<group>"; };
+		8A6638242C16BF6A00C532A5 /* PersonDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsViewModel.swift; sourceTree = "<group>"; };
+		8A6638262C16BF7900C532A5 /* PersonDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsViewController.swift; sourceTree = "<group>"; };
 		8AB11CCC2C1457A1002174B8 /* cybilltek-ios-exam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cybilltek-ios-exam.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AB11CCF2C1457A1002174B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8AB11CD12C1457A1002174B8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,7 +99,6 @@
 		8AB11CF02C14692D002174B8 /* PersonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsView.swift; sourceTree = "<group>"; };
 		8AB11CF22C146938002174B8 /* PersonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsViewModel.swift; sourceTree = "<group>"; };
 		8AB11CF42C146941002174B8 /* PersonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsViewController.swift; sourceTree = "<group>"; };
-		8AB11CF72C1469A0002174B8 /* PersonsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonsTableViewCell.xib; sourceTree = "<group>"; };
 		8AB11CF92C1469AF002174B8 /* PersonsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsTableViewCell.swift; sourceTree = "<group>"; };
 		8AB11CFB2C146CAE002174B8 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		8AB11D072C14954F002174B8 /* PersonsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsModel.swift; sourceTree = "<group>"; };
@@ -144,6 +150,16 @@
 				8A4E4E182C15E79300DE4291 /* ComponentLabel.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		8A6638212C16BD1100C532A5 /* PersonDetails */ = {
+			isa = PBXGroup;
+			children = (
+				8A6638262C16BF7900C532A5 /* PersonDetailsViewController.swift */,
+				8A6638222C16BF6200C532A5 /* PersonDetailsView.swift */,
+				8A6638242C16BF6A00C532A5 /* PersonDetailsViewModel.swift */,
+			);
+			path = PersonDetails;
 			sourceTree = "<group>";
 		};
 		8AB11CC32C1457A1002174B8 = {
@@ -216,6 +232,7 @@
 				8A4E4E282C15ED4200DE4291 /* UIDevice+Notch.swift */,
 				8A4E4E2A2C15F29200DE4291 /* UIImage+Extension.swift */,
 				8A4E4E2C2C15F8E200DE4291 /* UIImageView+Extension.swift */,
+				8A66381F2C16896D00C532A5 /* UIStackView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -223,6 +240,7 @@
 		8AB11CEE2C146901002174B8 /* Persons */ = {
 			isa = PBXGroup;
 			children = (
+				8A6638212C16BD1100C532A5 /* PersonDetails */,
 				8AB11D202C14AF78002174B8 /* Services */,
 				8AB11D092C1496A4002174B8 /* DataSource */,
 				8AB11D062C149510002174B8 /* Model */,
@@ -237,7 +255,6 @@
 		8AB11CF62C146953002174B8 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				8AB11CF72C1469A0002174B8 /* PersonsTableViewCell.xib */,
 				8AB11CF92C1469AF002174B8 /* PersonsTableViewCell.swift */,
 			);
 			path = TableViewCells;
@@ -390,7 +407,6 @@
 			files = (
 				8AB11CD92C1457A2002174B8 /* Assets.xcassets in Resources */,
 				8AB11CDC2C1457A2002174B8 /* Base in Resources */,
-				8AB11CF82C1469A0002174B8 /* PersonsTableViewCell.xib in Resources */,
 				8AB11CD72C1457A1002174B8 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,6 +480,7 @@
 			files = (
 				8AB11D0D2C149942002174B8 /* TableViewBaseCell.swift in Sources */,
 				8AB11D242C14B112002174B8 /* ErrorType.swift in Sources */,
+				8A6638232C16BF6200C532A5 /* PersonDetailsView.swift in Sources */,
 				8AB11CD42C1457A1002174B8 /* ViewController.swift in Sources */,
 				8AB11D222C14AF8C002174B8 /* PersonsService.swift in Sources */,
 				8AB11CFA2C1469AF002174B8 /* PersonsTableViewCell.swift in Sources */,
@@ -481,10 +498,12 @@
 				8A4E4E2D2C15F8E200DE4291 /* UIImageView+Extension.swift in Sources */,
 				8A4E4E0E2C15E07700DE4291 /* Routes.swift in Sources */,
 				8AB11CFC2C146CAE002174B8 /* UIView.swift in Sources */,
+				8A6638272C16BF7900C532A5 /* PersonDetailsViewController.swift in Sources */,
 				8A4E4E1B2C15E86F00DE4291 /* NavigationButtonType.swift in Sources */,
 				8AB11CF52C146941002174B8 /* PersonsViewController.swift in Sources */,
 				8A4E4E292C15ED4200DE4291 /* UIDevice+Notch.swift in Sources */,
 				8AB11D0B2C1496ED002174B8 /* PersonsDataSource.swift in Sources */,
+				8A6638252C16BF6A00C532A5 /* PersonDetailsViewModel.swift in Sources */,
 				8A4E4E1F2C15E97A00DE4291 /* FontStyle.swift in Sources */,
 				8A4E4E252C15EB4E00DE4291 /* Swizzler.swift in Sources */,
 				8AB11CE62C146374002174B8 /* BaseViewController.swift in Sources */,
@@ -499,6 +518,7 @@
 				8AB11CEB2C146554002174B8 /* Observable.swift in Sources */,
 				8AB11D1D2C14AEA6002174B8 /* URL+QueryParamaters.swift in Sources */,
 				8A4E4E0C2C15E05900DE4291 /* NavigationItems.swift in Sources */,
+				8A6638202C16896D00C532A5 /* UIStackView.swift in Sources */,
 				8AB11CD22C1457A1002174B8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

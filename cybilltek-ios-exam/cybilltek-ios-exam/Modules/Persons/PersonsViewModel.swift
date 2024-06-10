@@ -42,6 +42,12 @@ class PersonsViewModel: BaseViewModel, BaseViewModelDefining {
         getData()
     }
     
+    func refresh() {
+        page = 1
+        isReachedLastPage = false
+        getData()
+    }
+    
     func getData() {
         let service = PersonsService()
         service.getPersonsData(page: page)?

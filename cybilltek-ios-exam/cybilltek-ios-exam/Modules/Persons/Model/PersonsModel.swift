@@ -29,7 +29,6 @@ struct PersonDetails: Codable {
     var login: Login?
     var dob, registered: Dob?
     var phone, cell: String?
-//    var id: String?
     var picture: Picture?
     var nat: String?
 }
@@ -44,7 +43,6 @@ struct Dob: Codable {
 struct Location: Codable {
     var street: Street?
     var city, state, country: String?
-//    var postcode: Int?
     var coordinates: Coordinates?
     var timezone: Timezone?
 }

@@ -11,15 +11,29 @@ import UIKit
 class PersonsTableViewCell: UITableViewCell {
     static let identifier = "PersonsTableViewCell"
     
-    @IBOutlet weak var stackView: UIStackView!
+    let stackViewInfo: UIStackView = {
+        let view = UIStackView().usingAutoLayout()
+        view.axis = .vertical
+        view.spacing = 4
+        view.alignment = .leading
+        view.distribution = .fill
+        return view
+    }()
     
     let imgView: UIImageView = {
         let view = UIImageView().usingAutoLayout()
         view.contentMode = .scaleAspectFit
         view.clipsToBounds = true
+//        view.layoutIfNeeded()
         return view
     }()
     
+    let viewAvatarFrame: UIView = {
+        let view = UIView().usingAutoLayout()
+        view.clipsToBounds = true
+        view.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        return view
+    }()
     
     func configure(data: PersonDetails) {
         setView(using: data)
@@ -28,11 +42,8 @@ class PersonsTableViewCell: UITableViewCell {
     private func setView(using: PersonDetails) {
         let personInfo = using
         
-        // setup stack view
-        stackView.axis = .vertical
-        stackView.spacing = 4
-        stackView.alignment = .leading
-        stackView.distribution = .fill
+        // reinitialized items for stack view
+        stackViewInfo.removeArrangedSubviews()
         
         // assign values
         // avatar
@@ -40,28 +51,41 @@ class PersonsTableViewCell: UITableViewCell {
            let imgUrl = picture.large {
             let avatarUrl = URL(string: imgUrl)
             imgView.setImage(withURL: avatarUrl)
-            stackView.addArrangedSubview(imgView)
+            viewAvatarFrame.addSubview(imgView)
         }
         
         // full name
         if let name = personInfo.name,
            let firstName = name.first,
            let lastName = name.last {
-            let fullName = "\(lastName), \(firstName)"
-            let lblFullName = createLabel(text: fullName, style: .title2)
-            stackView.addArrangedSubview(lblFullName)
+            let fullName = "\(firstName) \(lastName)"
+            let nameAgeContainer: UIStackView = {
+                let view = UIStackView().usingAutoLayout()
+                view.axis = .horizontal
+                view.alignment = .leading
+                view.spacing = 4
+                return view
+            }()
+            
+            let lblFullName = createLabel(text: "\(fullName),", style: .heading1)
+            let lblAge = createLabel(text: "\(getAge(data: personInfo.dob))", style: .heading1)
+            
+            nameAgeContainer.addArrangedSubview(lblFullName)
+            nameAgeContainer.addArrangedSubview(lblAge)
+            
+            stackViewInfo.addArrangedSubview(nameAgeContainer)
         }
         
         // address
         if let location = personInfo.location {
             let lblAddress = createLabel(text: getAddress(location: location))
-            stackView.addArrangedSubview(lblAddress)
+            stackViewInfo.addArrangedSubview(lblAddress)
         }
         
         // contact info
         if let email = personInfo.email,
            let mobile = personInfo.cell {
-            // container for contac infos
+            // container for contact infos
             let contactInfoContainer: UIStackView = {
                 let view = UIStackView().usingAutoLayout()
                 view.axis = .horizontal
@@ -74,35 +98,42 @@ class PersonsTableViewCell: UITableViewCell {
             let lblMobileNumber = createLabel(text: mobile)
             contactInfoContainer.addArrangedSubview(lblEmail)
             contactInfoContainer.addArrangedSubview(lblMobileNumber)
-            stackView.addArrangedSubview(contactInfoContainer)
+            stackViewInfo.addArrangedSubview(contactInfoContainer)
         }
         
-        // birthday and age
-        if let dateOfBirth = personInfo.dob,
-           let bday = dateOfBirth.date,
-           let age = dateOfBirth.age {
-            // container for bday and age
-            let birthInfoContainer: UIStackView = {
-                let view = UIStackView().usingAutoLayout()
-                view.axis = .horizontal
-                view.alignment = .leading
-                view.spacing = 4
-                return view
-            }()
+        contentView.addSubview(viewAvatarFrame)
+        contentView.addSubview(stackViewInfo)
+        setConstraints()
+        contentView.layoutIfNeeded()
+    }
+    
+    private func setConstraints() {
+        NSLayoutConstraint.activate([
+            imgView.heightAnchor(equalTo: 80),
+            imgView.widthAnchor(equalTo: imgView.heightAnchor),
             
-            let lblBday = createLabel(text: bday)
-            let lblAge = createLabel(text: "\(age)")
-            birthInfoContainer.addArrangedSubview(lblBday)
-            birthInfoContainer.addArrangedSubview(lblAge)
-            stackView.addArrangedSubview(birthInfoContainer)
-        }
-
-        //        Contact person
-        //        Contact person's phone number
+            imgView.topAnchor(equalTo: viewAvatarFrame.topAnchor),
+            imgView.bottomAnchor(equalTo: viewAvatarFrame.bottomAnchor),
+            imgView.leadingAnchor(equalTo: viewAvatarFrame.leadingAnchor),
+            imgView.trailingAnchor(equalTo: viewAvatarFrame.trailingAnchor),
+            
+            viewAvatarFrame.leadingAnchor(equalTo: contentView.leadingAnchor, constant: 16),
+            viewAvatarFrame.topAnchor(equalTo: contentView.topAnchor, constant: 8),
+            viewAvatarFrame.bottomAnchor(equalTo: contentView.bottomAnchor, constant: 8),
+            
+            stackViewInfo.centerYAnchor(equalTo: viewAvatarFrame.centerYAnchor),
+            stackViewInfo.leadingAnchor(equalTo: viewAvatarFrame.trailingAnchor, constant: 16),
+            stackViewInfo.trailingAnchor(equalTo: contentView.trailingAnchor, constant: 16)
+        ])
         
     }
     
-    private func createLabel(text: String, 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        viewAvatarFrame.layer.cornerRadius = imgView.frame.height / 2
+    }
+    
+    private func createLabel(text: String,
                              style: FontStyle = .body,
                              color: UIColor = Asset.Colors.text.color) -> UIView {
         let label = ComponentLabel(style: style, color: color)
@@ -135,4 +166,28 @@ class PersonsTableViewCell: UITableViewCell {
         return address
     }
     
+    private func getAge(data: Dob?) -> Int {
+        guard let data = data else { return 0 }
+        let now = Date()
+        let birthday = getBirthDate(data: data)
+        let calendar = Calendar.current
+        let dataComponent = calendar.dateComponents([.year], from: birthday, to: now)
+        if let calculatedAge = dataComponent.year {
+            return calculatedAge
+        }
+        return 0
+    }
+    
+    private func getBirthDate(data: Dob?) -> Date {
+        var birthDate = Date()
+        guard let data = data,
+              let birthDateString = data.date else { return birthDate }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:mm.SSSZ"
+        if let convertedDate = dateFormatter.date(from: birthDateString) {
+            birthDate = convertedDate
+        }
+        return birthDate
+    }
 }
