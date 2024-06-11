@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A274D482C17D6FD00174BC0 /* AvatarNavigationHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A274D472C17D6FD00174BC0 /* AvatarNavigationHeader.swift */; };
 		8A4E4E042C15DE1700DE4291 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E4E032C15DE1700DE4291 /* Assets.swift */; };
 		8A4E4E0C2C15E05900DE4291 /* NavigationItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E4E0B2C15E05900DE4291 /* NavigationItems.swift */; };
 		8A4E4E0E2C15E07700DE4291 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E4E0D2C15E07700DE4291 /* Routes.swift */; };
@@ -58,6 +59,7 @@
 /* Begin PBXFileReference section */
 		2BC8F1B814C4C5CEF2168A96 /* Pods_cybilltek_ios_exam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cybilltek_ios_exam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		425C10AD0A58D79EA4671213 /* Pods-cybilltek-ios-exam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cybilltek-ios-exam.release.xcconfig"; path = "Target Support Files/Pods-cybilltek-ios-exam/Pods-cybilltek-ios-exam.release.xcconfig"; sourceTree = "<group>"; };
+		8A274D472C17D6FD00174BC0 /* AvatarNavigationHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarNavigationHeader.swift; sourceTree = "<group>"; };
 		8A4E4E032C15DE1700DE4291 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		8A4E4E072C15DEED00DE4291 /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
 		8A4E4E082C15DEED00DE4291 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				8A6638262C16BF7900C532A5 /* PersonDetailsViewController.swift */,
 				8A6638222C16BF6200C532A5 /* PersonDetailsView.swift */,
 				8A6638242C16BF6A00C532A5 /* PersonDetailsViewModel.swift */,
+				8A274D472C17D6FD00174BC0 /* AvatarNavigationHeader.swift */,
 			);
 			path = PersonDetails;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				8A6638272C16BF7900C532A5 /* PersonDetailsViewController.swift in Sources */,
 				8A4E4E1B2C15E86F00DE4291 /* NavigationButtonType.swift in Sources */,
 				8AB11CF52C146941002174B8 /* PersonsViewController.swift in Sources */,
+				8A274D482C17D6FD00174BC0 /* AvatarNavigationHeader.swift in Sources */,
 				8A4E4E292C15ED4200DE4291 /* UIDevice+Notch.swift in Sources */,
 				8AB11D0B2C1496ED002174B8 /* PersonsDataSource.swift in Sources */,
 				8A6638252C16BF6A00C532A5 /* PersonDetailsViewModel.swift in Sources */,

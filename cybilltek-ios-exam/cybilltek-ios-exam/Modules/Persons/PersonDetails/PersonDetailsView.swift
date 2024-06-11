@@ -11,6 +11,12 @@ import RxCocoa
 
 class PersonDetailsView: BaseView {
     
+    private let viewHeader: UIView = {
+        let view = UIView().usingAutoLayout()
+        view.backgroundColor = Asset.Colors.text.color
+        return view
+    }()
+    
     private let scrollView: UIScrollView = {
         let view = UIScrollView().usingAutoLayout()
         view.isScrollEnabled = true
@@ -57,6 +63,7 @@ class PersonDetailsView: BaseView {
         stackView.addArrangedSubview(imgView)
         scrollView.addSubview(stackView)
         scrollView.isScrollEnabled = true
+        addSubview(viewHeader)
         addSubview(scrollView)
     }
     
@@ -65,11 +72,21 @@ class PersonDetailsView: BaseView {
         if let picture = data.picture,
            let profilePicture = picture.large,
            let profilePictureUrl = URL(string: profilePicture) {
+            // setup header navigtion
+            let viewAvatarNavigation = AvatarNavigationHeader().usingAutoLayout()
+            viewAvatarNavigation.configure(data: data)
+            viewHeader.addSubview(viewAvatarNavigation)
+            
             imgView.setImage(withURL: profilePictureUrl)
             viewFakeDim.addSubview(imgView)
             stackView.addArrangedSubview(viewFakeDim)
             
             NSLayoutConstraint.activate([
+                viewAvatarNavigation.topAnchor(equalTo: safeAreaLayoutGuide.topAnchor),
+                viewAvatarNavigation.leadingAnchor(equalTo: viewHeader.leadingAnchor),
+                viewAvatarNavigation.trailingAnchor(equalTo: viewHeader.trailingAnchor),
+                viewAvatarNavigation.bottomAnchor(equalTo: viewHeader.bottomAnchor),
+                
                 imgView.heightAnchor(equalTo: 500),
                 
                 viewFakeDim.topAnchor(equalTo: imgView.topAnchor),
@@ -124,7 +141,11 @@ class PersonDetailsView: BaseView {
     
     override func setConstraints() {
         NSLayoutConstraint.activate([
-            scrollView.topAnchor(equalTo: safeAreaLayoutGuide.topAnchor),
+            viewHeader.topAnchor(equalTo: topAnchor),
+            viewHeader.leadingAnchor(equalTo: leadingAnchor),
+            viewHeader.trailingAnchor(equalTo: trailingAnchor),
+
+            scrollView.topAnchor(equalTo: viewHeader.bottomAnchor),
             scrollView.bottomAnchor(equalTo: bottomAnchor),
             scrollView.leadingAnchor(equalTo: leadingAnchor),
             scrollView.trailingAnchor(equalTo: trailingAnchor),
